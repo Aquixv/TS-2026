@@ -1,9 +1,9 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './App.css';
 import TestCard from './Testcard';
-import type { UserProfile } from './types'; 
-import ProductCard from './Product';
-import type { Product } from './types';
+import type { UserProfile, Character } from './types'; 
+import UserCard from './Users';
+import Status from './Status';
 
 function App() {
   const [user, setUser] = useState<UserProfile>({
@@ -15,15 +15,23 @@ function App() {
   const toggleStatus = () => {
     setUser({ ...user, isOnline: !user.isOnline });
   };
-const [Product, Setproduct] = useState<Product>({
-    _id: "prod_98765",
-    title: "Wireless Headphones",
-    price: 199.99,
-    Available: true,
-  });
-  const toggleProduct = () => {
-    Setproduct({ ...Product, Available: !Product.Available });
-  };
+
+  const characterList: Character[] = [
+    { name: "Aquii", age: 1000, title: "Mr", status: false },
+    { name: "Stella", age: 2000, title: "Mrs", status: false },
+    { name: "Goku", age: 4000, title: "Mr", status: true },
+    { name: "Tomoe", age: 5000, title: "Mr", status: false }
+  ];
+
+  const [currentIndex, setCurrentIndex] = useState<number>(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentIndex((prev) => (prev === characterList.length - 1 ? 0 : prev + 1));
+    }, 2500);
+    return () => clearInterval(timer);
+  }, [characterList.length]);
+
   return (
     <div>
       <h1>TypeScript Playground</h1>
@@ -35,18 +43,13 @@ const [Product, Setproduct] = useState<Product>({
         Toggle Status
       </button>
 
-<div>
-      <ProductCard item={Product} />
-      <button 
-        onClick={toggleProduct} 
-        style={{ marginTop: '20px', padding: '10px 20px', cursor: 'pointer' }}
-      >
-        Toggle Available
-      </button>
+      <div style={{ marginTop: '40px' }}>
+        <h1>Character Cycler</h1>
+        <UserCard character={characterList[currentIndex]} />
+      </div>
+      <Status status="success" />
     </div>
-      
-    </div>
-  )
+  );
 }
 
 export default App;
