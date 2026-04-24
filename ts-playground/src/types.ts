@@ -17,3 +17,23 @@ export interface Character {
   age: number;
 }
 export type StatusState = "loading" | "success" | "error";
+
+export type CustomButtonProps = {
+  children: string;
+  handleClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
+};
+
+export type WrapperCardProps = {
+  title: string;
+  subtitle?: string; 
+  children: React.ReactNode;
+}
+export type ContainerProps = {
+  children: React.ReactNode;
+  styles: React.CSSProperties;
+};
+
+export type User = {
+name: string;
+email: string;
+}

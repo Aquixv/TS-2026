@@ -4,6 +4,9 @@ import TestCard from './Testcard';
 import type { UserProfile, Character } from './types'; 
 import UserCard from './Users';
 import Status from './Status';
+import { InternalButton, EventButton, CustomButton } from './CustomButton';
+import WrapperCard from './WrapperCard';
+import { Container } from './Styles';
 
 function App() {
   const [user, setUser] = useState<UserProfile>({
@@ -31,8 +34,15 @@ function App() {
     }, 2500);
     return () => clearInterval(timer);
   }, [characterList.length]);
-
+const myAppLevelFunction = () => {
+    alert("EXTERNAL ACTION: This alert came all the way from App.tsx!");
+  };
+  const myClickAction = (event: React.MouseEvent<HTMLButtonElement>) => {
+    console.log("Button clicked!", event);
+    alert(`You clicked: ${event.currentTarget.innerText}`);
+  };
   return (
+    <div>
     <div>
       <h1>TypeScript Playground</h1>
       <TestCard user={user} />
@@ -48,6 +58,32 @@ function App() {
         <UserCard character={characterList[currentIndex]} />
       </div>
       <Status status="success" />
+    <div style={{ padding: '20px', display: 'flex', gap: '20px' }}>
+      <WrapperCard title="Dashboard" subtitle="Welcome back!"> 
+      <InternalButton>
+        I Handle Myself
+      </InternalButton>
+      <EventButton handleExternalClick={myAppLevelFunction}>
+        App.tsx Controls Me
+      </EventButton>
+</WrapperCard>
+    </div>
+    </div>
+    <div style={{ padding: '20px' }}>
+      <h1>Event Props Testing</h1>
+      <CustomButton handleClick={myClickAction}>
+        Click Me to Test Events!
+      </CustomButton>
+<div style={{ marginTop: '40px' }}>
+  <h1>Style Props Testing</h1>
+  <Container styles={{ border: '2px solid blue', padding: '20px', marginBottom: '10px' }}>
+    I am a blue box!
+  </Container>
+  <Container styles={{ backgroundColor: 'darkred', color: 'white', textAlign: 'center', padding: '10px' }}>
+    I am a red warning box!
+  </Container>
+</div>
+    </div>
     </div>
   );
 }
