@@ -8,6 +8,9 @@ import { InternalButton, EventButton, CustomButton } from './CustomButton';
 import WrapperCard from './WrapperCard';
 import { Container } from './Styles';
 import { Counter } from './Usereducer';
+import { CartProvider } from './Usecontext';
+import { Storefront } from './Fakestore';
+import { MutableTimer } from './Userefs';
 
 function App() {
   const [user, setUser] = useState<UserProfile>({
@@ -43,6 +46,7 @@ const myAppLevelFunction = () => {
     alert(`You clicked: ${event.currentTarget.innerText}`);
   };
   return (
+    <CartProvider>
     <div>
     <div>
       <h1>TypeScript Playground</h1>
@@ -88,8 +92,11 @@ const myAppLevelFunction = () => {
         <h2>useReducer Test</h2>
         <Counter />
       </div>
+      <Storefront></Storefront>
+      <MutableTimer></MutableTimer>
     </div>
     </div>
+    </CartProvider>
   );
 }
 

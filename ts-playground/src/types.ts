@@ -37,3 +37,14 @@ export type User = {
 name: string;
 email: string;
 }
+export type CartItem = {
+  id: string;
+  name: string;
+  price: number;
+};
+
+export type CartContextType = {
+  cart: CartItem[];
+  addToCart: (item: CartItem) => void;
+  clearCart: () => void;
+};
