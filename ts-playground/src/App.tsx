@@ -7,6 +7,7 @@ import Status from './Status';
 import { InternalButton, EventButton, CustomButton } from './CustomButton';
 import WrapperCard from './WrapperCard';
 import { Container } from './Styles';
+import { Counter } from './Usereducer';
 
 function App() {
   const [user, setUser] = useState<UserProfile>({
@@ -83,6 +84,10 @@ const myAppLevelFunction = () => {
     I am a red warning box!
   </Container>
 </div>
+<div style={{ padding: '20px', border: '2px solid black', marginTop: '20px' }}>
+        <h2>useReducer Test</h2>
+        <Counter />
+      </div>
     </div>
     </div>
   );
