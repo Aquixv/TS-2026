@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect} from 'react';
 import './App.css';
 import TestCard from './Testcard';
 import type { UserProfile, Character } from './types'; 
@@ -11,6 +11,7 @@ import { Counter } from './Usereducer';
 import { CartProvider } from './Usecontext';
 import { Storefront } from './Fakestore';
 import { MutableTimer } from './Userefs';
+import { Counter2 } from './Classcomponents';
 
 function App() {
   const [user, setUser] = useState<UserProfile>({
@@ -94,6 +95,7 @@ const myAppLevelFunction = () => {
       </div>
       <Storefront></Storefront>
       <MutableTimer></MutableTimer>
+      <Counter2 message='The count value is:'></Counter2>
     </div>
     </div>
     </CartProvider>
