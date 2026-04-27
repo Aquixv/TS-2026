@@ -12,6 +12,9 @@ import { CartProvider } from './Usecontext';
 import { Storefront } from './Fakestore';
 import { MutableTimer } from './Userefs';
 import { Counter2 } from './Classcomponents';
+import { Private } from './Classcomponents-Auth/Private';
+import { Profile } from './Classcomponents-Auth/Profile';
+import { List } from './Generics';
 
 function App() {
   const [user, setUser] = useState<UserProfile>({
@@ -96,6 +99,22 @@ const myAppLevelFunction = () => {
       <Storefront></Storefront>
       <MutableTimer></MutableTimer>
       <Counter2 message='The count value is:'></Counter2>
+      <Private isLoggedin={true} component={Profile}></Private>
+      <div className='App'>
+      <List 
+        items={['Batman', 'Superman']} 
+        onClick={(item) => console.log("Clicked:", item)}
+        renderItem={(item) => <b>{item}</b>} 
+      />
+      <List 
+        items={[
+          { First: 'Batman', last: 'Bruce wayne' },
+          { First: 'Superman', last: 'Clark Kent' }
+        ]} 
+        onClick={(item) => console.log("Clicked:", item)}
+        renderItem={(item) => <span>🦸‍♂️ {item.First} (aka {item.last})</span>} 
+      />
+      </div>
     </div>
     </div>
     </CartProvider>
