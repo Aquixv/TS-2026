@@ -15,6 +15,7 @@ import { Counter2 } from './Classcomponents';
 import { Private } from './Classcomponents-Auth/Private';
 import { Profile } from './Classcomponents-Auth/Profile';
 import { List } from './Generics';
+import { RandomNumber } from './Restricting props';
 
 function App() {
   const [user, setUser] = useState<UserProfile>({
@@ -115,6 +116,7 @@ const myAppLevelFunction = () => {
         renderItem={(item) => <span>🦸‍♂️ {item.First} (aka {item.last})</span>} 
       />
       </div>
+      <div style={{border: '2px solid blue', padding: '20px', marginBottom: '10px' }}><RandomNumber value={0} isPositive/></div>
     </div>
     </div>
     </CartProvider>
