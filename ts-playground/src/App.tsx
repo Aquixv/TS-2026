@@ -102,7 +102,7 @@ const myAppLevelFunction = () => {
       <MutableTimer></MutableTimer>
       <Counter2 message='The count value is:'></Counter2>
       <Private isLoggedin={true} component={Profile}></Private>
-      <div className='App'>
+      <div className='App' style={{border: '2px solid blue', padding: '20px', marginBottom: '10px' }}>
       <List 
         items={['Batman', 'Superman']} 
         onClick={(item) => console.log("Clicked:", item)}
@@ -117,8 +117,9 @@ const myAppLevelFunction = () => {
         renderItem={(item) => <span>🦸‍♂️ {item.First} (aka {item.last})</span>} 
       />
       </div>
-      <div style={{border: '2px solid blue', padding: '20px', marginBottom: '10px' }}><RandomNumber value={0} isPositive/></div>
-      <Toast position='center'/>
+      <div style={{border: '2px solid grey', padding: '20px', marginBottom: '10px' }}><RandomNumber value={0} isPositive/></div>
+      <div style={{border: '2px solid yellow', padding: '20px', marginBottom: '10px' }}>
+      <Toast position='center'/></div>
     </div>
     </div>
     </CartProvider>
