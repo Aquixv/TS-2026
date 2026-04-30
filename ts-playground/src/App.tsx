@@ -16,6 +16,7 @@ import { Private } from './Classcomponents-Auth/Private';
 import { Profile } from './Classcomponents-Auth/Profile';
 import { List } from './Generics';
 import { RandomNumber } from './Restricting props';
+import { Toast } from './TemplateLiterals';
 
 function App() {
   const [user, setUser] = useState<UserProfile>({
@@ -117,6 +118,7 @@ const myAppLevelFunction = () => {
       />
       </div>
       <div style={{border: '2px solid blue', padding: '20px', marginBottom: '10px' }}><RandomNumber value={0} isPositive/></div>
+      <Toast position='center'/>
     </div>
     </div>
     </CartProvider>
