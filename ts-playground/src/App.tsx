@@ -17,6 +17,7 @@ import { Profile } from './Classcomponents-Auth/Profile';
 import { List } from './Generics';
 import { RandomNumber } from './Restricting props';
 import { Toast } from './TemplateLiterals';
+import { Text } from './Polymorphic comps/Test';
 
 function App() {
   const [user, setUser] = useState<UserProfile>({
@@ -120,6 +121,11 @@ const myAppLevelFunction = () => {
       <div style={{border: '2px solid grey', padding: '20px', marginBottom: '10px' }}><RandomNumber value={0} isPositive/></div>
       <div style={{border: '2px solid yellow', padding: '20px', marginBottom: '10px' }}>
       <Toast position='center'/></div>
+      <div style={{border: '2px solid purple', padding: '20px', marginBottom: '10px' }}>
+      <Text as='h1' size ='lg'>Heading</Text>
+      <Text as='p' size ='md'>Paragraph</Text>
+      <Text as='label' htmlFor='someId' size ='sm' color='secondary'>Foot</Text>
+      </div>
     </div>
     </div>
     </CartProvider>
